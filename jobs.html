@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jobs listing</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<!--  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/mystyles.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script  src="job.js"></script>
+	
+	<script type="text/javascript">
+		function f(){
+			var len=myData.length;
+			alert("SHOWING "+len+ " JOBS");
+			for(pos in myData){
+				var row=myData[pos];
+				var st="<strong> Title: "+row[0]+"</strong><br><i> Company Name: "+row[1]+"</i><br> Location: "+row[2]+"<br> Experience: "+row[3]+"<br> Posted on: "+row[4]+"<br>";
+
+				var x="<div class=\"col-lg-4 col-md-6 col-sm-12 col-xs-12\"><div class=\"container cardshadow thumbnail box\">"+st+"</div></div>";
+
+				var theDiv = document.getElementById("demo");
+				theDiv.innerHTML += x; 
+			}
+		}
+	</script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body onload="">
+<div id="demo"></div>
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+	<br>
+	<div style=" text-align:center ">
+		Search: <input type="text" ng-model="search"><br>
+		SortBy:
+		<form>
+			  <input ng-model="sort" type="radio" value="org"> Organization
+			  <input ng-model="sort" type="radio" value="location"> Location<br>
+			  <input ng-model="sort" type="radio" value="title"> Title
+			  <input ng-model="sort" type="radio" value="posted"> Date<br>
+			  <input ng-model="sort" type="radio" value="exp"> Experience
+		</form>
+	</div>
+	<br><br>
+  	<div ng-repeat="x in job | filter : search | orderBy: sort">
+  		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  		<div class="thumbnail cardshadow">
+  			<div class="box center">
+  				<br>
+	  			<strong class="title">{{x.title}}</strong><br>
+	  			<i>{{x.org}}</i><br><br>
+	  			Description: <span class="gen">{{x.description}}</span><br>
+	  			Location: <span class="gen">{{x.location}}</span><br>
+	  			Experience: <span class="gen">{{x.exp}}</span><br>
+	  			Posted on: <span class="gen">{{x.posted}}</span><br><br>
+	  			<p><a href="{{x.link}}" class="btn btn-primary" role="button">Apply</a></p>
+  			</div>
+  			</div>
+  		</div>
+  	</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("job.js").then(function (response) {
+        $scope.job = response.data.myData;
+    });
+});
+</script>
+</body>
+
+</html>

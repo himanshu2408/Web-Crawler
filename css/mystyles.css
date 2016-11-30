@@ -1,0 +1,91 @@
+.navbar-inverse {
+     background: #154642;
+     padding: 0;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background: #0ab2b1;
+}
+.mybutton {
+	width: 28%;
+	margin-bottom: 20px;
+	padding:3px;
+	background-color: 	#D3D3D3;
+	color: #154642;
+	border-radius: 4px;
+	
+}
+.ebutton {
+	width: 28%;
+	margin-bottom: 20px;
+	padding:3px;
+	background-color: 	#D3D3D3;
+	color: #154642;
+}
+.morebutton {
+	width: 28%;
+	padding:3px;
+	margin-bottom: 20px;
+	background-color: 	#D3D3D3;
+	color: #154642;
+}
+a:hover{
+		background: #0ab2b1;
+}
+.mycontainer{
+	border: 3xp solid black;
+}
+.box{
+	height: 300px;
+	background-image: url("dbg.jpg");
+}
+.mycard{
+	margin-top:25px;width:100%;background-color:#ffffff;
+}
+.info{
+	padding-top:20px;margin-bottom:20px;
+}
+.address{
+	padding-top:20px;
+}
+.addcol{
+	margin-bottom:20px; text-align:center;
+}
+body{
+	background-image:url("gcbg.jpg");
+	overflow-x: hidden;
+}
+#parent:hover #more{
+	color: #0ab2b1;
+	font-size: 110%;
+	cursor: pointer;
+}
+#parent2:hover #more2{
+	color: #0ab2b1;
+	font-size: 110%;
+	cursor: pointer;
+}
+#parent3:hover #more3{
+	color: #0ab2b1;
+	font-size: 110%;
+	cursor: pointer;
+}
+.cardshadow:hover{
+	transition: all 0.2s ease;
+	box-shadow: 4px 4px 4px 4px rgba(100, 150, 200, 0.5), 2px 2px 12px 2px rgba(100, 150, 200, 0.5);
+}
+.cardshadow{
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 25px 0 rgba(0, 0, 0, 0.19);
+}
+.center{
+	text-align: center;
+	color: #4F9FCF;
+}
+.title{
+	color: #2F6F9F;
+}
+.gen{
+	color: #AA6708;
+}
